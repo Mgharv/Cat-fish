@@ -563,6 +563,40 @@ uppercase = true
 pixel_size = 0.001
 depth = 0.01
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1w2up"]
+albedo_color = Color(0.18039216, 0.36078432, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_bsgff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqrdp"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1w2up"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynxhs"]
+albedo_color = Color(0.1764706, 0.8980392, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsgff"]
+albedo_color = Color(0.015686275, 0.6039216, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfhwq"]
+albedo_color = Color(1, 0.54901963, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45ump"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5w03k"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_typ1r"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bppb"]
+albedo_color = Color(1, 1, 0.53333336, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clvbf"]
+albedo_color = Color(1, 1, 0, 1)
+
 [node name="Main" type="Node3D" unique_id=500145794]
 script = ExtResource("1_ig7tw")
 
@@ -746,3 +780,657 @@ transform = Transform3D(0.96385396, 0, -0.26643118, 0, 1, 0, 0.26643118, 0, 0.96
 text = "Press 'B' on your
 right controller
 to toggle passthrough!"
+
+[node name="TriangleFish1" type="Node3D" parent="." unique_id=1390872456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71258384, -1.9764352, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish1" unique_id=247068000]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish1" unique_id=1986802954]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.007656147, 0, 0, 0, 0.2972792, 3.3462515, 2.9549444, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishFin1" type="MeshInstance3D" parent="TriangleFish1" unique_id=435753264]
+transform = Transform3D(-0.10486521, 0.063932106, 0, -0.063932106, -0.10486521, 0, 0, 0, 0.29727918, 3.0842285, 3.0873473, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishFin2" type="MeshInstance3D" parent="TriangleFish1" unique_id=1380758177]
+transform = Transform3D(-0.10486521, 0.063932106, 0, -0.063932106, -0.10486521, 0, 0, 0, 0.29727918, 3.0749118, 2.791453, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish1" unique_id=998884770]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish1" unique_id=307242090]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8522549, 3.0024858, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish1" unique_id=168991295]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8522549, 3.0024858, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish12" type="Node3D" parent="." unique_id=1123078783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.124502, -1.5533276, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish12" unique_id=725901885]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish12" unique_id=319587563]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.007656147, 0, 0, 0, 0.2972792, 3.3462515, 2.9549444, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish12" unique_id=817560748]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish12" unique_id=752333290]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8522549, 3.0024858, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish12" unique_id=901546415]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8522549, 3.0024858, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish13" type="Node3D" parent="." unique_id=1023288647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15688586, -0.8490367, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish13" unique_id=1589244410]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish13" unique_id=1802118504]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.007656147, 0, 0, 0, 0.2972792, 3.3462515, 2.9549444, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish13" unique_id=921299817]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_1w2up")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish13" unique_id=2089322895]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8522549, 3.0024858, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish13" unique_id=1376215986]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8522549, 3.0024858, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish2" type="Node3D" parent="." unique_id=1632813591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02455759, -1.509416, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish2" unique_id=1662762080]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_ynxhs")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish2" unique_id=1079652443]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.007656147, 0, 0, 0, 0.2972792, 3.3462515, 2.9549444, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_ynxhs")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish2" unique_id=1407430641]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_ynxhs")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish2" unique_id=1663813095]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8469143, 2.9986017, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish2" unique_id=1339697535]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8469143, 2.9986017, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish11" type="Node3D" parent="." unique_id=819886602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.136577, -1.8981785, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish11" unique_id=678013828]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_ynxhs")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish11" unique_id=114773592]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.007656147, 0, 0, 0, 0.2972792, 3.3462515, 2.9549444, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_ynxhs")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish11" unique_id=2066432385]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_ynxhs")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish11" unique_id=809209996]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8469143, 2.9986017, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish11" unique_id=1584633415]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8469143, 2.9986017, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish8" type="Node3D" parent="." unique_id=789703104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0700573, -0.35653853, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish8" unique_id=480119893]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_ynxhs")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish8" unique_id=320245820]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.007656147, 0, 0, 0, 0.2972792, 3.3462515, 2.9549444, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_ynxhs")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish8" unique_id=1033392298]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_ynxhs")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish8" unique_id=1974628791]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8469143, 2.9986017, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish8" unique_id=1423327355]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.8469143, 2.9986017, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish7" type="Node3D" parent="." unique_id=1379855835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.501595, -2.3334646, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish7" unique_id=1622351881]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.821732, 2.9870768, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish7" unique_id=1846034416]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.821732, 2.9870768, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish7" unique_id=1760439441]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_bsgff")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish7" unique_id=1643629265]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.007656147, 0, 0, 0, 0.2972792, 3.3462515, 2.9549444, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_bsgff")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish7" unique_id=1364615394]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_bsgff")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish9" type="Node3D" parent="." unique_id=155375725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7628524, -0.71296203, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish9" unique_id=804090126]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.821732, 2.9870768, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish9" unique_id=2066622579]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.821732, 2.9870768, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish9" unique_id=1040618787]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_bsgff")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish9" unique_id=1750207218]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.007656147, 0, 0, 0, 0.2972792, 3.3462515, 2.9549444, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_bsgff")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish9" unique_id=1850473809]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_bsgff")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish10" type="Node3D" parent="." unique_id=391130408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4107645, -0.71296203, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish10" unique_id=48933963]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.821732, 2.9870768, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish10" unique_id=1420089803]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.019999985, 2.821732, 2.9870768, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish10" unique_id=1162783352]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_bsgff")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish10" unique_id=1246179274]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.007656147, 0, 0, 0, 0.2972792, 3.3462515, 2.9549444, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_bsgff")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish10" unique_id=629182111]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_bsgff")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish3" type="Node3D" parent="." unique_id=1946923069]
+transform = Transform3D(0.6174212, 0, 0, 0, 0.76422966, 0, 0, 0, 1, -1.9688237, -0.7582358, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish3" unique_id=1095662544]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_vfhwq")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish3" unique_id=2102098265]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_vfhwq")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish3" unique_id=527864577]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_vfhwq")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish3" unique_id=770862440]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999998, 2.8380792, 2.9810047, 0.14959776)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish3" unique_id=573421237]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999998, 2.8380792, 2.9810047, -0.14824474)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish20" type="Node3D" parent="." unique_id=1123356463]
+transform = Transform3D(0.6174212, 0, 0, 0, 0.76422966, 0, 0, 0, 1, 0.49004543, -0.4141481, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish20" unique_id=536676378]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_vfhwq")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish20" unique_id=83659728]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_vfhwq")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish20" unique_id=1745673123]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_vfhwq")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish20" unique_id=700777384]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999998, 2.8380792, 2.9810047, 0.14959776)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish20" unique_id=1349059122]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999998, 2.8380792, 2.9810047, -0.14824474)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish21" type="Node3D" parent="." unique_id=1825565972]
+transform = Transform3D(0.6174212, 0, 0, 0, 0.76422966, 0, 0, 0, 1, -3.4173746, 0.51224756, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish21" unique_id=1772713243]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_vfhwq")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish21" unique_id=429173457]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_vfhwq")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish21" unique_id=2138244141]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_vfhwq")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish21" unique_id=564079229]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999998, 2.8380792, 2.9810047, 0.14959776)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish21" unique_id=1223128221]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999998, 2.8380792, 2.9810047, -0.14824474)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish4" type="Node3D" parent="." unique_id=753554810]
+transform = Transform3D(0.6174212, 0, 0, 0, 0.76422966, 0, 0, 0, 1, -0.64490384, -1.6806725, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish4" unique_id=512091115]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999996, 2.8530467, 2.9905143, 0.14959776)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish4" unique_id=1739750828]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999996, 2.8530467, 2.9905143, -0.14824474)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish4" unique_id=213117388]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.2986082, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_45ump")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish4" unique_id=635375443]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727912, 3.3462515, 2.9549718, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_5w03k")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish4" unique_id=1469984841]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.2986082, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_typ1r")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish22" type="Node3D" parent="." unique_id=1903834557]
+transform = Transform3D(0.6174212, 0, 0, 0, 0.76422966, 0, 0, 0, 1, -4.4801455, -1.9019564, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish22" unique_id=512728286]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999996, 2.8530467, 2.9905143, 0.14959776)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish22" unique_id=1916455776]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999996, 2.8530467, 2.9905143, -0.14824474)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish22" unique_id=1564019522]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.2986082, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_45ump")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish22" unique_id=434837836]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727912, 3.3462515, 2.9549718, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_5w03k")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish22" unique_id=527253335]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.2986082, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_typ1r")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish23" type="Node3D" parent="." unique_id=1182279235]
+transform = Transform3D(0.6174212, 0, 0, 0, 0.76422966, 0, 0, 0, 1, -1.164125, -0.51325214, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish23" unique_id=1123010165]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999996, 2.8530467, 2.9905143, 0.14959776)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish23" unique_id=1680703237]
+transform = Transform3D(0.032392796, 0, 0, 0, 0.026170144, 0, 0, 0, 0.019999996, 2.8530467, 2.9905143, -0.14824474)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish23" unique_id=1556870301]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.2986082, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_45ump")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish23" unique_id=1005835409]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727912, 3.3462515, 2.9549718, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_5w03k")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish23" unique_id=2108036640]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.2986082, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_typ1r")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish5" type="Node3D" parent="." unique_id=345621938]
+transform = Transform3D(0.5162988, 0, 0, 0, 0.891881, 0, 0, 0, 1, 2.1205776, -1.961619, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish5" unique_id=582863305]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.8723466, 3.0013769, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish5" unique_id=470090007]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.8723466, 3.0013769, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish5" unique_id=142520777]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish5" unique_id=799269424]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish5" unique_id=2064649131]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish17" type="Node3D" parent="." unique_id=406259454]
+transform = Transform3D(0.5162988, 0, 0, 0, 0.891881, 0, 0, 0, 1, -0.46643925, 0.27859247, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish17" unique_id=565692715]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.8723466, 3.0013769, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish17" unique_id=557931827]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.8723466, 3.0013769, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish17" unique_id=838258374]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish17" unique_id=1940043203]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish17" unique_id=851799859]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish18" type="Node3D" parent="." unique_id=1219939288]
+transform = Transform3D(0.5162988, 0, 0, 0, 0.891881, 0, 0, 0, 1, -1.6544528, -0.12061107, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish18" unique_id=1541712906]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.8723466, 3.0013769, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish18" unique_id=926374338]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.8723466, 3.0013769, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish18" unique_id=54602495]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish18" unique_id=590244305]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish18" unique_id=1100574984]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish19" type="Node3D" parent="." unique_id=29568786]
+transform = Transform3D(0.5162988, 0, 0, 0, 0.891881, 0, 0, 0, 1, 1.1769738, -2.3052888, 1.4798491)
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish19" unique_id=156226633]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.8723466, 3.0013769, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish19" unique_id=1629844998]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.8723466, 3.0013769, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish19" unique_id=1421709262]
+transform = Transform3D(-0.012089973, 0.29836342, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1448483, 2.9567635, 0)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish19" unique_id=1785698393]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish19" unique_id=1166124430]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_5bppb")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="TriangleFish6" type="Node3D" parent="." unique_id=142233789]
+transform = Transform3D(0.5162988, 0, 0, 0, 0.891881, 0, 0, 0, 1, -0.6105767, -1.362826, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish6" unique_id=262419346]
+transform = Transform3D(-0.012089973, 0.29836345, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1484182, 2.9567635, -0.00025093555)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish6" unique_id=1742388113]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish6" unique_id=181339076]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish6" unique_id=761217845]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.886997, 2.9882627, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish6" unique_id=896205964]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.886997, 2.9882627, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish14" type="Node3D" parent="." unique_id=1505938784]
+transform = Transform3D(0.5162988, 0, 0, 0, 0.891881, 0, 0, 0, 1, 0.16999036, -0.7735865, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish14" unique_id=49651701]
+transform = Transform3D(-0.012089973, 0.29836345, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1484182, 2.9567635, -0.00025093555)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish14" unique_id=1133890375]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish14" unique_id=1237785638]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish14" unique_id=929584250]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.886997, 2.9882627, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish14" unique_id=1916835152]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.886997, 2.9882627, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish15" type="Node3D" parent="." unique_id=1503603800]
+transform = Transform3D(0.5162988, 0, 0, 0, 0.891881, 0, 0, 0, 1, -3.5470822, -0.7735865, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish15" unique_id=2110991473]
+transform = Transform3D(-0.012089973, 0.29836345, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1484182, 2.9567635, -0.00025093555)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish15" unique_id=1666566137]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish15" unique_id=1172669318]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish15" unique_id=760410644]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.886997, 2.9882627, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish15" unique_id=1578039499]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.886997, 2.9882627, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="TriangleFish16" type="Node3D" parent="." unique_id=1357990524]
+transform = Transform3D(0.5162988, 0, 0, 0, 0.891881, 0, 0, 0, 1, -3.124894, -2.0508237, 1.4798491)
+
+[node name="FishBody" type="MeshInstance3D" parent="TriangleFish16" unique_id=157551591]
+transform = Transform3D(-0.012089973, 0.29836345, 0, -0.29836342, -0.012089973, 0, 0, 0, 0.29860824, 3.1484182, 2.9567635, -0.00025093555)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishTail" type="MeshInstance3D" parent="TriangleFish16" unique_id=916096760]
+transform = Transform3D(-0.007656147, -0.12257819, 0, 0.12257819, -0.0076561472, 0, 0, 0, 0.29727915, 3.3462517, 2.954972, -0.0016819239)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishBody2" type="MeshInstance3D" parent="TriangleFish16" unique_id=342576817]
+transform = Transform3D(0.013492707, -0.29830328, 0, 0.29830328, 0.013492707, 0, 0, 0, 0.29860824, 2.8504848, 2.9691386, 0)
+material_override = SubResource("StandardMaterial3D_clvbf")
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="FishEye1" type="MeshInstance3D" parent="TriangleFish16" unique_id=75423747]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.886997, 2.9882627, 0.15482342)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
+
+[node name="FishEye2" type="MeshInstance3D" parent="TriangleFish16" unique_id=184872786]
+transform = Transform3D(0.03873726, 0, 0, 0, 0.022424515, 0, 0, 0, 0.019999985, 2.886997, 2.9882627, -0.14301908)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("SphereMesh_1w2up")
