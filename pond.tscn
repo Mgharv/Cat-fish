@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/pond.gd" id="1_pond"]
+[ext_resource type="PackedScene" uid="uid://p0086xib3q3f" path="res://fish.tscn" id="2_fish"]
+
+[node name="Pond" type="Node3D"]
+script = ExtResource("1_pond")
+fish_scene = ExtResource("2_fish")
+
+[node name="Fishes" type="Node3D" parent="."]
