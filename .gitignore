@@ -1,0 +1,17 @@
+# Godot 4 cache and imported assets. Rebuilt automatically when the project opens.
+.godot/
+
+# Android/Quest build template (installed per machine by "Install Android Build Template")
+/android/
+
+# Export outputs
+*.apk
+*.aab
+/build/
+/export/
+
+# macOS
+.DS_Store
+
+# Session logs from the game (keep data out of the repo unless you mean to commit it)
+/logs/
