@@ -1,10 +1,22 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/pond.gd" id="1_pond"]
-[ext_resource type="PackedScene" uid="uid://p0086xib3q3f" path="res://fish.tscn" id="2_fish"]
+[ext_resource type="PackedScene" path="res://fish.tscn" id="2_fish"]
+[ext_resource type="Script" path="res://scripts/fish_species.gd" id="3_e6my3"]
+[ext_resource type="Resource" path="res://species/01_orange_roundfish.tres" id="4_0l2ji"]
+[ext_resource type="Resource" path="res://species/02_blue_darter.tres" id="5_y4b7v"]
+[ext_resource type="Resource" path="res://species/03_yellow_longfish.tres" id="6_koo8m"]
+[ext_resource type="Resource" path="res://species/04_spotted_darter.tres" id="7_s325f"]
+[ext_resource type="Resource" path="res://species/05_fantail_darter.tres" id="8_2ttvd"]
+[ext_resource type="Resource" path="res://species/06_banded_darter.tres" id="9_ufvb1"]
+[ext_resource type="Resource" path="res://species/07_pinstripe_darter.tres" id="10_dp88u"]
+[ext_resource type="Resource" path="res://species/08_speckled_darter.tres" id="11_dm258"]
+[ext_resource type="Resource" path="res://species/09_plain_darter.tres" id="12_ip2b8"]
 
-[node name="Pond" type="Node3D"]
+[node name="Pond" type="Node3D" unique_id=1180617497]
 script = ExtResource("1_pond")
 fish_scene = ExtResource("2_fish")
+fish_count = 18
+species_mix = Array[ExtResource("3_e6my3")]([ExtResource("4_0l2ji"), ExtResource("5_y4b7v"), ExtResource("6_koo8m"), ExtResource("7_s325f"), ExtResource("8_2ttvd"), ExtResource("9_ufvb1"), ExtResource("10_dp88u"), ExtResource("11_dm258"), ExtResource("12_ip2b8")])
 
-[node name="Fishes" type="Node3D" parent="."]
+[node name="Fishes" type="Node3D" parent="." unique_id=1666804376]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishSpecies" format=3]
+
+[ext_resource type="Script" path="res://scripts/fish_species.gd" id="1_5jmud"]
+
+[resource]
+script = ExtResource("1_5jmud")
+display_name = "Speckled Darter"
+pattern = 4
+pattern_frequency = 28.0
+pattern_size = 0.6

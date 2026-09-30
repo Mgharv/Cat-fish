@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bx3vo21cuj7pj" path="res://main.gd" id="1_mqdc6"]
 [ext_resource type="PackedScene" path="res://pond.tscn" id="3_pond"]
+[ext_resource type="Script" path="res://scripts/bridge_walk.gd" id="4_walk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6doco"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -30,3 +31,8 @@ shadow_enabled = true
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1216039035]
 
 [node name="Pond" parent="." instance=ExtResource("3_pond")]
+
+[node name="BridgeWalk" type="Node" parent="." node_paths=PackedStringArray("player", "pond")]
+script = ExtResource("4_walk")
+player = NodePath("../XROrigin3D")
+pond = NodePath("../Pond")

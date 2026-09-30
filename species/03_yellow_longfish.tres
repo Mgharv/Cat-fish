@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishSpecies" format=3]
+
+[ext_resource type="Script" path="res://scripts/fish_species.gd" id="1_2mvbu"]
+
+[resource]
+script = ExtResource("1_2mvbu")
+display_name = "Yellow Longfish"
+body_length = 0.49
+body_height = 0.21
+body_width = 0.1
+body_color = Color(0.95, 0.83, 0.2, 1)
+fin_color = Color(0.98, 0.9, 0.55, 1)

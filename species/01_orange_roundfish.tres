@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishSpecies" format=3]
+
+[ext_resource type="Script" path="res://scripts/fish_species.gd" id="1_ecpxk"]
+
+[resource]
+script = ExtResource("1_ecpxk")
+display_name = "Orange Roundfish"
+body_height = 0.45
+body_color = Color(0.95, 0.55, 0.15, 1)
+fin_color = Color(0.98, 0.72, 0.42, 1)

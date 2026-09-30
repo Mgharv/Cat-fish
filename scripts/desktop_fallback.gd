@@ -25,7 +25,7 @@ signal swatted(hit_position: Vector3, collider: Object)
 @export var eye_height := 1.6 ## metres, roughly standing head height
 @export var move_speed := 2.0 ## m/s
 @export var mouse_sensitivity := 0.003
-@export var swat_reach := 20.0 ## metres. Generous so desktop testing is easy.
+@export var swat_reach := 5.0 ## metres: how far a click-pounce reaches (match the VR pounce)
 @export var swat_push := 2.0 ## impulse applied to rigid bodies you swat
 
 var _origin: XROrigin3D = null

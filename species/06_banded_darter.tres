@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishSpecies" format=3]
+
+[ext_resource type="Script" path="res://scripts/fish_species.gd" id="1_50j16"]
+
+[resource]
+script = ExtResource("1_50j16")
+display_name = "Banded Darter"
+pattern = 2
+pattern_frequency = 2.0
+pattern_size = 0.3
