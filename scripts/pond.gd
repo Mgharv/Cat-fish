@@ -13,7 +13,7 @@ signal fish_swatted(fish)               ## passed up from any fish that gets hit
 
 # ---------- FISH ----------
 @export var fish_scene: PackedScene     ## the fish template (fish.tscn)
-@export var fish_count := 18            ## how many fish to spawn
+@export var fish_count := 30            ## how many fish to spawn
 @export var species_mix: Array[FishSpecies] = []  ## species to spawn (picked at random); empty = original look
 
 # ---------- SIZE (metres) ----------
@@ -37,23 +37,47 @@ signal fish_swatted(fish)               ## passed up from any fish that gets hit
 	set(value):
 		bottom_y = value
 		_build_pond()
-@export var bank_width := 3.0:          ## grassy ground around the pond
+@export var bank_width := 40.0:         ## how far the lawn stretches out from the pond
 	set(value):
 		bank_width = value
 		_build_pond()
 
+# ---------- SURROUNDINGS ----------
+@export var grass_tufts := 700:        ## little clumps of grass on the lawn
+	set(value):
+		grass_tufts = value
+		_build_pond()
+@export var reeds := 64:               ## tall reeds at the water's edge
+	set(value):
+		reeds = value
+		_build_pond()
+@export var trees := 0:                ## simple trees in the distance
+	set(value):
+		trees = value
+		_build_pond()
+
+@export var play_ambience := true       ## relaxing water sounds (lapping + drips)
+
 # ---------- WATER CLARITY ----------
-@export_range(0.0, 1.0, 0.05) var water_clarity := 1.0:   ## 1 = crystal clear, 0 = very murky
+@export_range(0.0, 1.0, 0.05) var water_clarity := 0.2:   ## 1 = crystal clear, 0 = very murky
 	set(value):
 		water_clarity = value
 		apply_water()
-@export var murk_color := Color(0.22, 0.40, 0.42)  ## colour things fade toward in murky water
+@export var murk_color := Color(0.10, 0.36, 0.33)  ## colour things fade toward in murky water (blue-green)
 @export var max_murk_per_metre := 0.7   ## how murky "clarity 0" is (fade per metre of water)
 
 # ---------- LOOK ----------
-@export var water_color := Color(0.2, 0.55, 0.85, 0.25):  ## last number = see-through-ness
+@export var water_color := Color(0.1, 0.5, 0.45, 0.3):  ## surface tint; last number = see-through-ness
 	set(value):
 		water_color = value
+		_build_pond()
+@export_range(0.0, 1.0, 0.05) var ripple_strength := 0.5:  ## surface ripples: 0 = flat calm water
+	set(value):
+		ripple_strength = value
+		_build_pond()
+@export var ripple_scale := 1.2:        ## ripples per metre (bigger = finer ripples)
+	set(value):
+		ripple_scale = value
 		_build_pond()
 @export var bank_color := Color(0.36, 0.52, 0.28)
 @export var earth_color := Color(0.38, 0.30, 0.22)
@@ -62,6 +86,9 @@ signal fish_swatted(fish)               ## passed up from any fish that gets hit
 
 const SEGMENTS := 96   # how smooth the circles are
 const UnderwaterShader := preload("res://assets/shaders/underwater_surface.gdshader")
+const WaterSurfaceShader := preload("res://assets/shaders/water_surface.gdshader")
+const PondAmbience := preload("res://scripts/pond_ambience.gd")
+const GrassShader := preload("res://assets/shaders/grass_ground.gdshader")
 
 var fishes: Node3D   # container the spawned fish go into
 
@@ -72,6 +99,12 @@ func _ready() -> void:
 		return  # in the editor: just show the pond, don't spawn fish
 	for i in fish_count:
 		spawn_fish()
+	if play_ambience:
+		var amb := PondAmbience.new()
+		amb.name = "Ambience"
+		amb.pond_radius = pond_radius
+		amb.surface_y = surface_y
+		add_child(amb)
 
 
 ## Where the player may walk: distance from the centre, from the ring's inner to outer edge.
@@ -135,7 +168,7 @@ func _build_pond() -> void:
 		return
 	# throw away the old pieces, then make fresh ones
 	for child in get_children():
-		if child.name != "Fishes":
+		if child.name != "Fishes" and child.name != "Ambience":
 			child.free()
 	if fishes == null:
 		fishes = get_node_or_null("Fishes")
@@ -149,13 +182,17 @@ func _build_pond() -> void:
 	var r_out := bridge_radius + bridge_width * 0.5
 
 	# Water surface and pond floor: flat discs
-	_piece("Water", _ring_flat(0.0, pond_radius, surface_y), _see_through(water_color))
+	_piece("Water", _ring_flat(0.0, pond_radius, surface_y), _water_surface())
 	_piece("PondFloor", _ring_flat(0.0, pond_radius, bottom_y), _underwater(floor_color))
 	# Earth wall around the edge (seen through the water, it shows how deep it is)
 	_piece("PondWall", _ring_wall(pond_radius, bottom_y, -slab), _underwater(earth_color))
-	# Grassy bank all around, top at y = 0 (with its inner edge face)
-	_piece("Bank", _ring_flat(pond_radius, pond_radius + bank_width, 0.0), _solid(bank_color))
-	_piece("BankEdge", _ring_wall(pond_radius, -slab, 0.0), _solid(bank_color.darkened(0.2)))
+	# Lawn all around, top at y = 0 (with its inner edge face at the water)
+	var grass := ShaderMaterial.new()
+	grass.shader = GrassShader
+	_piece("Bank", _ring_flat(pond_radius, pond_radius + bank_width, 0.0), grass)
+	_piece("BankEdge", _ring_wall(pond_radius, -slab, 0.0), _solid(earth_color))
+	# Grass tufts, reeds and trees
+	add_child(PondScenery.build(pond_radius, pond_radius + bank_width, grass_tufts, reeds, trees))
 
 	# The ring bridge: deck (top 5 mm above y = 0), its side faces, and low edge rails
 	var wood := _solid(wood_color)
@@ -241,6 +278,15 @@ func _set_water(mat: Material) -> void:
 		mat.set_shader_parameter("surface_y", global_position.y + surface_y)
 		mat.set_shader_parameter("water_color", murk_color)
 		mat.set_shader_parameter("murk_per_metre", murk_per_metre())
+
+
+func _water_surface() -> ShaderMaterial:
+	var mat := ShaderMaterial.new()
+	mat.shader = WaterSurfaceShader
+	mat.set_shader_parameter("tint", water_color)
+	mat.set_shader_parameter("ripple_strength", ripple_strength)
+	mat.set_shader_parameter("ripple_scale", ripple_scale)
+	return mat
 
 
 func _underwater(color: Color) -> ShaderMaterial:

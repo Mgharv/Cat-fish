@@ -569,9 +569,7 @@ script = ExtResource("11_aa0lp")
 world_environment = NodePath("../WorldEnvironment")
 
 [node name="Pond" parent="." unique_id=1180617497 instance=ExtResource("12_iu0sx")]
-water_clarity = 0.2
-murk_color = null
-max_murk_per_metre = null
+murk_color = Color(0.048969954, 0.34496498, 0.45394516, 1)
 
 [node name="BridgeWalk" type="Node" parent="." unique_id=171562805 node_paths=PackedStringArray("player", "pond")]
 script = ExtResource("25_mljfx")

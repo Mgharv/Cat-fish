@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishSpecies" format=3]
+
+[ext_resource type="Script" path="res://scripts/fish_species.gd" id="1_nhj2s"]
+
+[resource]
+script = ExtResource("1_nhj2s")
+display_name = "Yellow Banded Darter"
+body_color = Color(0.95, 0.83, 0.2, 1)
+fin_color = Color(0.98, 0.9, 0.55, 1)
+pattern = 2
+pattern_frequency = 2.0
+pattern_size = 0.3

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishSpecies" format=3]
+
+[ext_resource type="Script" path="res://scripts/fish_species.gd" id="1_gdh55"]
+
+[resource]
+script = ExtResource("1_gdh55")
+display_name = "Yellow Spotted Darter"
+body_color = Color(0.95, 0.83, 0.2, 1)
+fin_color = Color(0.98, 0.9, 0.55, 1)
+pattern = 1
+pattern_size = 0.6

@@ -12,11 +12,22 @@
 [ext_resource type="Resource" path="res://species/07_pinstripe_darter.tres" id="10_dp88u"]
 [ext_resource type="Resource" path="res://species/08_speckled_darter.tres" id="11_dm258"]
 [ext_resource type="Resource" path="res://species/09_plain_darter.tres" id="12_ip2b8"]
+[ext_resource type="Resource" path="res://species/10_blue_spotted_darter.tres" id="13_s1lg6"]
+[ext_resource type="Resource" path="res://species/11_orange_spotted_darter.tres" id="14_40xwk"]
+[ext_resource type="Resource" path="res://species/12_yellow_spotted_darter.tres" id="15_vcfq5"]
+[ext_resource type="Resource" path="res://species/13_blue_banded_darter.tres" id="16_hmhxr"]
+[ext_resource type="Resource" path="res://species/14_orange_banded_roundfish.tres" id="17_frc24"]
+[ext_resource type="Resource" path="res://species/15_yellow_banded_darter.tres" id="18_uwna7"]
+[ext_resource type="Resource" path="res://species/16_blue_pinstripe_darter.tres" id="19_dtaor"]
+[ext_resource type="Resource" path="res://species/17_orange_pinstripe_darter.tres" id="20_xcifi"]
+[ext_resource type="Resource" path="res://species/18_yellow_pinstripe_longfish.tres" id="21_f1p0o"]
+[ext_resource type="Resource" path="res://species/19_silver_spotted_roundfish.tres" id="22_lc5fk"]
+[ext_resource type="Resource" path="res://species/20_silver_banded_roundfish.tres" id="23_rywuv"]
+[ext_resource type="Resource" path="res://species/21_blue_fantail_darter.tres" id="24_cfg5l"]
 
 [node name="Pond" type="Node3D" unique_id=1180617497]
 script = ExtResource("1_pond")
 fish_scene = ExtResource("2_fish")
-fish_count = 18
-species_mix = Array[ExtResource("3_e6my3")]([ExtResource("4_0l2ji"), ExtResource("5_y4b7v"), ExtResource("6_koo8m"), ExtResource("7_s325f"), ExtResource("8_2ttvd"), ExtResource("9_ufvb1"), ExtResource("10_dp88u"), ExtResource("11_dm258"), ExtResource("12_ip2b8")])
+species_mix = Array[ExtResource("3_e6my3")]([ExtResource("4_0l2ji"), ExtResource("5_y4b7v"), ExtResource("6_koo8m"), ExtResource("7_s325f"), ExtResource("8_2ttvd"), ExtResource("9_ufvb1"), ExtResource("10_dp88u"), ExtResource("11_dm258"), ExtResource("12_ip2b8"), ExtResource("13_s1lg6"), ExtResource("14_40xwk"), ExtResource("15_vcfq5"), ExtResource("16_hmhxr"), ExtResource("17_frc24"), ExtResource("18_uwna7"), ExtResource("19_dtaor"), ExtResource("20_xcifi"), ExtResource("21_f1p0o"), ExtResource("22_lc5fk"), ExtResource("23_rywuv"), ExtResource("24_cfg5l")])
 
 [node name="Fishes" type="Node3D" parent="." unique_id=1666804376]
