@@ -2,7 +2,7 @@ shader_type spatial;
 // For things in the pond that aren't fish (floor, walls, bridge posts): a plain
 // colour that fades with water exactly the way the fish do (same lighting, same
 // fade colour), so fish never stand out just because the background ignores the murk.
-render_mode unshaded, cull_disabled;
+render_mode unshaded, cull_disabled, fog_disabled;   // same as the fish: murk only, no distance fog
 
 uniform vec3 albedo : source_color = vec3(0.5);
 uniform float shade_amount = 0.35;   // same simple lighting as the fish

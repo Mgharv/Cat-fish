@@ -2,7 +2,7 @@ shader_type spatial;
 // Flat-coloured fish body with a pattern that is defined by numbers,
 // so its spatial frequency is exact. UV.x = 0 at the nose -> 1 at the tail,
 // UV.y = angle around the body (0.25 = top of the back, 0.75 = belly).
-render_mode unshaded, cull_disabled;
+render_mode unshaded, cull_disabled, fog_disabled;   // fog is for the far scenery only; fish visibility comes from the murk alone
 
 uniform vec3 body_color : source_color = vec3(0.62, 0.64, 0.66);
 uniform vec3 pattern_color : source_color = vec3(0.18, 0.19, 0.21);

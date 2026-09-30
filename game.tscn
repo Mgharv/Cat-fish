@@ -471,6 +471,12 @@ _bundled = {
 }
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cjouy"]
+sky_top_color = Color(0.33, 0.53, 0.78, 1)
+sky_horizon_color = Color(0.72, 0.8, 0.86, 1)
+sky_curve = 0.12
+ground_bottom_color = Color(0.3, 0.38, 0.3, 1)
+ground_horizon_color = Color(0.72, 0.8, 0.86, 1)
+sun_angle_max = 20.0
 
 [sub_resource type="Sky" id="Sky_oqsj0"]
 sky_material = SubResource("ProceduralSkyMaterial_cjouy")
@@ -479,7 +485,16 @@ sky_material = SubResource("ProceduralSkyMaterial_cjouy")
 background_mode = 2
 sky = SubResource("Sky_oqsj0")
 ambient_light_source = 3
+ambient_light_energy = 0.6
 reflected_light_source = 2
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.72, 0.8, 0.86, 1)
+fog_density = 0.7
+fog_sky_affect = 0.0
+fog_depth_curve = 1.4
+fog_depth_begin = 18.0
+fog_depth_end = 140.0
 
 [node name="Game" type="Node3D" unique_id=500145794]
 script = ExtResource("1_i2p71")
@@ -557,10 +572,13 @@ environment = SubResource("Environment_lts4m")
 
 [node name="SunLight" type="DirectionalLight3D" parent="." unique_id=1844096403]
 transform = Transform3D(0.86601907, -0.3535631, 0.35355926, 0, 0.70710295, 0.70711064, -0.500011, -0.61237127, 0.6123646, 0, 2.9986405, 0)
-light_energy = 1.1
+light_color = Color(1, 0.96, 0.89, 1)
+light_energy = 1.0
 shadow_enabled = true
 shadow_bias = 0.03
 shadow_normal_bias = 1.0
+shadow_opacity = 0.7
+shadow_blur = 1.5
 directional_shadow_mode = 0
 directional_shadow_max_distance = 12.0
 
