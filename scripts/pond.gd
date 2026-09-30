@@ -59,6 +59,10 @@ signal fish_swatted(fish)               ## passed up from any fish that gets hit
 	set(value):
 		rocks = value
 		_build_pond()
+@export var distant_scenery := true:   ## far tree line + hazy hills (very cheap: a few flat bands)
+	set(value):
+		distant_scenery = value
+		_build_pond()
 
 @export var play_ambience := true       ## relaxing water sounds (lapping + drips)
 
@@ -199,9 +203,9 @@ func _build_pond() -> void:
 	grass.shader = GrassShader
 	_piece("Bank", _ring_flat(pond_radius, pond_radius + bank_width, 0.0), grass)
 	_piece("BankEdge", _ring_wall(pond_radius, -slab, 0.0), _solid(earth_color))
-	# Grass tufts, reeds, rocks and trees
+	# Grass tufts, reeds, rocks, trees and the distant landscape
 	add_child(PondScenery.build(pond_radius, pond_radius + bank_width, grass_tufts, reeds, trees,
-			rocks))
+			rocks, distant_scenery))
 
 	# The ring bridge: separate planks (top 5 mm above y = 0) on a dark frame,
 	# side boards, and a low curb along each edge
