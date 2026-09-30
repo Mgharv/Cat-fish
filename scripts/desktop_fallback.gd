@@ -34,6 +34,10 @@ var _yaw := 0.0
 var _pitch := 0.0
 var _swat_requested := false
 var _ignore: Array[RID] = []
+var _hint: Control = null
+var _hint_tween: Tween = null
+
+@export var hint_seconds := 6.0 ## how long the controls card stays before fading
 
 
 func _ready() -> void:
@@ -74,6 +78,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	elif event is InputEventKey and event.pressed and event.physical_keycode == KEY_ESCAPE:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		_show_hint(4.0)
 
 
 func _process(delta: float) -> void:
@@ -156,25 +161,52 @@ func _flash_paw(pos: Vector3) -> void:
 	tween.tween_callback(paw.queue_free)
 
 
-## Crosshair + controls hint, drawn on top of the 3D view.
+## Minimal reticle + a small see-through controls card in the bottom-left corner.
+## The card fades out a few seconds after you start playing, and comes back
+## whenever the mouse is freed (Esc).
 func _build_hud() -> void:
 	var hud := CanvasLayer.new()
 	hud.name = "DesktopHUD"
 	add_child(hud)
 
-	var crosshair := Label.new()
-	crosshair.text = "+"
-	crosshair.add_theme_font_size_override("font_size", 28)
-	crosshair.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	crosshair.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	crosshair.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	crosshair.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	crosshair.grow_vertical = Control.GROW_DIRECTION_BOTH
-	hud.add_child(crosshair)
+	var reticle := Label.new()
+	reticle.text = "+"
+	reticle.add_theme_font_size_override("font_size", 18)
+	reticle.add_theme_color_override("font_color", Color(1, 1, 1, 0.75))
+	reticle.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.4))
+	reticle.add_theme_constant_override("outline_size", 2)
+	reticle.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	reticle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	reticle.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	reticle.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	reticle.grow_vertical = Control.GROW_DIRECTION_BOTH
+	hud.add_child(reticle)
 
-	var hint := Label.new()
-	hint.text = "DESKTOP MODE (no headset)\nClick: capture mouse / swat   Mouse: look   WASD: move   E/Q: up/down   Esc: free mouse"
-	hint.position = Vector2(12, 8)
-	hint.add_theme_color_override("font_outline_color", Color.BLACK)
-	hint.add_theme_constant_override("outline_size", 4)
-	hud.add_child(hint)
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.08, 0.1, 0.1, 0.45)
+	style.set_corner_radius_all(8)
+	style.set_content_margin_all(10)
+	_hint = PanelContainer.new()
+	_hint.add_theme_stylebox_override("panel", style)
+	_hint.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
+	_hint.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	_hint.position += Vector2(16, -16)
+	var text := Label.new()
+	text.text = "Desktop mode\nClick  pounce   ·   Mouse  look   ·   WASD  move   ·   Esc  free mouse"
+	text.add_theme_font_size_override("font_size", 13)
+	text.add_theme_color_override("font_color", Color(1, 1, 1, 0.85))
+	_hint.add_child(text)
+	hud.add_child(_hint)
+	_show_hint(hint_seconds)
+
+
+## Shows the controls card, then fades it out after `seconds`.
+func _show_hint(seconds: float) -> void:
+	if _hint == null:
+		return
+	if _hint_tween:
+		_hint_tween.kill()
+	_hint.modulate.a = 1.0
+	_hint_tween = create_tween()
+	_hint_tween.tween_interval(seconds)
+	_hint_tween.tween_property(_hint, "modulate:a", 0.0, 1.0)
