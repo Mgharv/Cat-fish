@@ -35,8 +35,8 @@ func _ready() -> void:
 	add_child(_logger)
 	_poster = WantedPoster.new()
 	_poster.name = "WantedPoster"
+	_poster.position = Vector3(0, poster_height, 0)   # set before adding, so its post reaches the floor
 	pond.add_child(_poster)
-	_poster.position = Vector3(0, poster_height, 0)
 	_beep_right = _make_beep(880.0, 0.15)
 	_beep_wrong = _make_beep(220.0, 0.25)
 	# wait one frame so the pond has spawned its fish (and desktop mode has started), then start
