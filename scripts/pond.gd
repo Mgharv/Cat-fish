@@ -67,7 +67,7 @@ signal fish_swatted(fish)               ## passed up from any fish that gets hit
 @export var max_murk_per_metre := 0.7   ## how murky "clarity 0" is (fade per metre of water)
 
 # ---------- LOOK ----------
-@export var water_color := Color(0.1, 0.5, 0.45, 0.3):  ## surface tint; last number = see-through-ness
+@export var water_color := Color(0.12, 0.44, 0.45, 0.3):  ## surface tint (muted teal); last number = see-through-ness
 	set(value):
 		water_color = value
 		_build_pond()
@@ -78,6 +78,10 @@ signal fish_swatted(fish)               ## passed up from any fish that gets hit
 @export var ripple_scale := 1.2:        ## ripples per metre (bigger = finer ripples)
 	set(value):
 		ripple_scale = value
+		_build_pond()
+@export_range(0.0, 1.0, 0.05) var reflection_strength := 0.45:  ## sky reflection when looking across the water (weak looking straight down)
+	set(value):
+		reflection_strength = value
 		_build_pond()
 @export var bank_color := Color(0.36, 0.52, 0.28)
 @export var earth_color := Color(0.38, 0.30, 0.22)
@@ -286,6 +290,7 @@ func _water_surface() -> ShaderMaterial:
 	mat.set_shader_parameter("tint", water_color)
 	mat.set_shader_parameter("ripple_strength", ripple_strength)
 	mat.set_shader_parameter("ripple_scale", ripple_scale)
+	mat.set_shader_parameter("reflection_strength", reflection_strength)
 	return mat
 
 
