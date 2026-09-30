@@ -1,31 +1,19 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://btjny5urewslx"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_i2p71"]
-[ext_resource type="Script" path="res://scripts/xr_grab.gd" id="2_xa8c5"]
-[ext_resource type="Script" path="res://scripts/pounce.gd" id="3_5b14r"]
-[ext_resource type="Script" path="res://scripts/B_toggle_passthrough.gd" id="4_bnpwn"]
-[ext_resource type="Script" path="res://scripts/xr_visuals.gd" id="5_36jdj"]
-[ext_resource type="Texture2D" path="res://assets/models/controllers/quest_touch_plus_left_crystalControllers_left_BaseColor.png" id="6_xfvwf"]
-[ext_resource type="Texture2D" path="res://assets/models/controllers/quest_touch_plus_right_crystalControllers_right_BaseColor.png" id="7_dhpj7"]
-[ext_resource type="Script" path="res://scripts/xr_hands.gd" id="8_7knny"]
-[ext_resource type="Script" path="res://scripts/xr_grab_hands.gd" id="9_082n1"]
-[ext_resource type="Script" path="res://scripts/xr_move.gd" id="10_xex6t"]
-[ext_resource type="Script" path="res://scripts/xr_passthrough.gd" id="11_aa0lp"]
+[ext_resource type="Script" uid="uid://bx3vo21cuj7pj" path="res://main.gd" id="1_i2p71"]
+[ext_resource type="Script" uid="uid://u4v467pv0cty" path="res://scripts/xr_grab.gd" id="2_xa8c5"]
+[ext_resource type="Script" uid="uid://xqiwqb7p1xjt" path="res://scripts/pounce.gd" id="3_5b14r"]
+[ext_resource type="Script" uid="uid://jfdo7emflrdm" path="res://scripts/B_toggle_passthrough.gd" id="4_bnpwn"]
+[ext_resource type="Script" uid="uid://cj6aow3gc4vhe" path="res://scripts/xr_visuals.gd" id="5_36jdj"]
+[ext_resource type="Texture2D" uid="uid://q20ptx0jejle" path="res://assets/models/controllers/quest_touch_plus_left_crystalControllers_left_BaseColor.png" id="6_xfvwf"]
+[ext_resource type="Texture2D" uid="uid://c038dxexu2lhv" path="res://assets/models/controllers/quest_touch_plus_right_crystalControllers_right_BaseColor.png" id="7_dhpj7"]
+[ext_resource type="Script" uid="uid://v4bbtfxluagp" path="res://scripts/xr_hands.gd" id="8_7knny"]
+[ext_resource type="Script" uid="uid://bt5krry1meoum" path="res://scripts/xr_grab_hands.gd" id="9_082n1"]
+[ext_resource type="Script" uid="uid://cabtbicn2evsq" path="res://scripts/xr_move.gd" id="10_xex6t"]
+[ext_resource type="Script" uid="uid://bkeashwobe3gi" path="res://scripts/xr_passthrough.gd" id="11_aa0lp"]
 [ext_resource type="PackedScene" path="res://pond.tscn" id="12_iu0sx"]
-[ext_resource type="Script" path="res://scripts/pond.gd" id="13_4v2jo"]
-[ext_resource type="PackedScene" path="res://fish.tscn" id="14_l1i01"]
-[ext_resource type="Script" path="res://scripts/fish_species.gd" id="15_r62pu"]
-[ext_resource type="Resource" path="res://species/01_orange_roundfish.tres" id="16_klri6"]
-[ext_resource type="Resource" path="res://species/02_blue_darter.tres" id="17_eu6ph"]
-[ext_resource type="Resource" path="res://species/03_yellow_longfish.tres" id="18_edr7y"]
-[ext_resource type="Resource" path="res://species/04_spotted_darter.tres" id="19_kq12w"]
-[ext_resource type="Resource" path="res://species/05_fantail_darter.tres" id="20_t46w6"]
-[ext_resource type="Resource" path="res://species/06_banded_darter.tres" id="21_m28ev"]
-[ext_resource type="Resource" path="res://species/07_pinstripe_darter.tres" id="22_lwlx3"]
-[ext_resource type="Resource" path="res://species/08_speckled_darter.tres" id="23_0de7l"]
-[ext_resource type="Resource" path="res://species/09_plain_darter.tres" id="24_87ddb"]
-[ext_resource type="Script" path="res://scripts/bridge_walk.gd" id="25_mljfx"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="26_qpefm"]
+[ext_resource type="Script" uid="uid://bxgwqtdsupb4t" path="res://scripts/bridge_walk.gd" id="25_mljfx"]
+[ext_resource type="Script" uid="uid://bgtoxwamsgrcn" path="res://scripts/game_manager.gd" id="26_qpefm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_grab"]
 radius = 0.08
@@ -580,10 +568,10 @@ directional_shadow_max_distance = 12.0
 script = ExtResource("11_aa0lp")
 world_environment = NodePath("../WorldEnvironment")
 
-[node name="Pond" type="Node3D" parent="." unique_id=1180617497 instance=ExtResource("12_iu0sx")]
-script = ExtResource("13_4v2jo")
-fish_scene = ExtResource("14_l1i01")
-species_mix = Array[ExtResource("15_r62pu")]([ExtResource("16_klri6"), ExtResource("17_eu6ph"), ExtResource("18_edr7y"), ExtResource("19_kq12w"), ExtResource("20_t46w6"), ExtResource("21_m28ev"), ExtResource("22_lwlx3"), ExtResource("23_0de7l"), ExtResource("24_87ddb")])
+[node name="Pond" parent="." unique_id=1180617497 instance=ExtResource("12_iu0sx")]
+water_clarity = 0.2
+murk_color = null
+max_murk_per_metre = null
 
 [node name="BridgeWalk" type="Node" parent="." unique_id=171562805 node_paths=PackedStringArray("player", "pond")]
 script = ExtResource("25_mljfx")

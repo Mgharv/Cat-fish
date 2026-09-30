@@ -42,6 +42,14 @@ signal fish_swatted(fish)               ## passed up from any fish that gets hit
 		bank_width = value
 		_build_pond()
 
+# ---------- WATER CLARITY ----------
+@export_range(0.0, 1.0, 0.05) var water_clarity := 1.0:   ## 1 = crystal clear, 0 = very murky
+	set(value):
+		water_clarity = value
+		apply_water()
+@export var murk_color := Color(0.22, 0.40, 0.42)  ## colour things fade toward in murky water
+@export var max_murk_per_metre := 0.7   ## how murky "clarity 0" is (fade per metre of water)
+
 # ---------- LOOK ----------
 @export var water_color := Color(0.2, 0.55, 0.85, 0.25):  ## last number = see-through-ness
 	set(value):
@@ -53,6 +61,7 @@ signal fish_swatted(fish)               ## passed up from any fish that gets hit
 @export var wood_color := Color(0.55, 0.38, 0.22)
 
 const SEGMENTS := 96   # how smooth the circles are
+const UnderwaterShader := preload("res://assets/shaders/underwater_surface.gdshader")
 
 var fishes: Node3D   # container the spawned fish go into
 
@@ -89,6 +98,7 @@ func spawn_fish(sp: FishSpecies = null) -> Node3D:
 		fish.species = species_mix.pick_random()
 	fish.swatted.connect(func(f): fish_swatted.emit(f))   # signals go up
 	fishes.add_child(fish)
+	_apply_water_to(fish)
 	return fish
 
 
@@ -140,9 +150,9 @@ func _build_pond() -> void:
 
 	# Water surface and pond floor: flat discs
 	_piece("Water", _ring_flat(0.0, pond_radius, surface_y), _see_through(water_color))
-	_piece("PondFloor", _ring_flat(0.0, pond_radius, bottom_y), _solid(floor_color))
+	_piece("PondFloor", _ring_flat(0.0, pond_radius, bottom_y), _underwater(floor_color))
 	# Earth wall around the edge (seen through the water, it shows how deep it is)
-	_piece("PondWall", _ring_wall(pond_radius, bottom_y, -slab), _solid(earth_color))
+	_piece("PondWall", _ring_wall(pond_radius, bottom_y, -slab), _underwater(earth_color))
 	# Grassy bank all around, top at y = 0 (with its inner edge face)
 	_piece("Bank", _ring_flat(pond_radius, pond_radius + bank_width, 0.0), _solid(bank_color))
 	_piece("BankEdge", _ring_wall(pond_radius, -slab, 0.0), _solid(bank_color.darkened(0.2)))
@@ -157,7 +167,7 @@ func _build_pond() -> void:
 	_piece("RailOut", _ring_wall(r_out - 0.03, 0.005, 0.06), dark)
 
 	# Posts holding the bridge up, standing in the water, about every 2 m
-	var post_mat := _solid(wood_color.darkened(0.35))
+	var post_mat := _underwater(wood_color.darkened(0.35))
 	var posts := maxi(6, int(TAU * bridge_radius / 2.0))
 	for i in posts:
 		var ang := TAU * i / posts
@@ -167,6 +177,7 @@ func _build_pond() -> void:
 			post.bottom_radius = 0.06
 			post.height = -bottom_y
 			_piece("BridgePost", post, post_mat, Vector3(cos(ang) * r, bottom_y / 2.0, sin(ang) * r))
+	apply_water()
 
 
 ## A flat ring (or a full disc when r0 = 0), lying level at height y.
@@ -201,6 +212,42 @@ func _ring_wall(r: float, y0: float, y1: float) -> Mesh:
 		st.add_vertex(p00); st.add_vertex(p10); st.add_vertex(p11)
 		st.add_vertex(p00); st.add_vertex(p11); st.add_vertex(p01)
 	return st.commit()
+
+
+## Murk per metre for the current clarity setting.
+func murk_per_metre() -> float:
+	return (1.0 - water_clarity) * max_murk_per_metre
+
+
+## Pushes the current water settings to everything under the water (fish + pond parts).
+## Call this after changing water_clarity during a game (e.g. a new level).
+func apply_water() -> void:
+	if not is_inside_tree():
+		return
+	for node in find_children("*", "MeshInstance3D", true, false):
+		_set_water(node.material_override)
+	if fishes:
+		for f in fishes.get_children():
+			_apply_water_to(f)
+
+
+func _apply_water_to(fish: Node) -> void:
+	for node in fish.find_children("*", "MeshInstance3D", true, false):
+		_set_water(node.material_override)
+
+
+func _set_water(mat: Material) -> void:
+	if mat is ShaderMaterial:
+		mat.set_shader_parameter("surface_y", global_position.y + surface_y)
+		mat.set_shader_parameter("water_color", murk_color)
+		mat.set_shader_parameter("murk_per_metre", murk_per_metre())
+
+
+func _underwater(color: Color) -> ShaderMaterial:
+	var mat := ShaderMaterial.new()
+	mat.shader = UnderwaterShader
+	mat.set_shader_parameter("albedo", color)
+	return mat
 
 
 func _piece(piece_name: String, mesh: Mesh, material: Material, pos := Vector3.ZERO) -> void:

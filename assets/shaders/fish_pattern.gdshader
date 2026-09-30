@@ -12,17 +12,28 @@ uniform float pattern_size = 0.5;
 uniform float shade_amount = 0.25;  // 0 = perfectly flat colour, 1 = strong 3D shading
 uniform float length_to_girth = 3.0; // keeps spots round
 
-// ---- water murk (depth fade), set by the pond ----
+// ---- water murk, set by the pond ----
+// Light fades the further it travels through water, so deep or far-away fish
+// fade toward the water colour and lose contrast.
 uniform float surface_y = 100.0;    // world height of the water surface
 uniform vec3 water_color : source_color = vec3(0.2, 0.45, 0.55);
 uniform float murk_per_metre = 0.0; // 0 = crystal clear
 
-varying float world_y;
+varying vec3 world_pos;
 
 float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 
 void vertex() {
-	world_y = (MODEL_MATRIX * vec4(VERTEX, 1.0)).y;
+	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+}
+
+// How many metres of water lie between the eye and this point.
+float water_path(vec3 p, vec3 eye) {
+	float below = surface_y - p.y;            // depth of the point under the surface
+	if (below <= 0.0) return 0.0;             // above the water: no murk
+	float drop = eye.y - p.y;
+	if (drop <= below) return length(p - eye); // eye is underwater too
+	return length(p - eye) * below / drop;     // only the part of the sight line under water
 }
 
 void fragment() {
@@ -59,8 +70,8 @@ void fragment() {
 	// gentle fixed-direction shading so the body still reads as 3D
 	float light = clamp(dot(normalize(NORMAL), normalize((VIEW_MATRIX * vec4(0.3, 1.0, 0.4, 0.0)).xyz)), 0.0, 1.0);
 	col *= mix(1.0, 0.65 + 0.35 * light, shade_amount);
-	// murk: deeper below the surface -> fades toward the water colour
-	float depth = max(surface_y - world_y, 0.0);
-	col = mix(col, water_color, 1.0 - exp(-depth * murk_per_metre));
+	// murk: the more water in the way, the more it fades toward the water colour
+	float path = water_path(world_pos, CAMERA_POSITION_WORLD);
+	col = mix(col, water_color, 1.0 - exp(-path * murk_per_metre));
 	ALBEDO = col;
 }
