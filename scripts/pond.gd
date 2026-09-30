@@ -86,7 +86,7 @@ signal fish_swatted(fish)               ## passed up from any fish that gets hit
 @export var bank_color := Color(0.36, 0.52, 0.28)
 @export var earth_color := Color(0.38, 0.30, 0.22)
 @export var floor_color := Color(0.55, 0.48, 0.35)
-@export var wood_color := Color(0.55, 0.38, 0.22)
+@export var wood_color := Color(0.52, 0.35, 0.21)   ## warm medium brown (bridge + poster frame)
 
 const SEGMENTS := 96   # how smooth the circles are
 const UnderwaterShader := preload("res://assets/shaders/underwater_surface.gdshader")
@@ -198,14 +198,15 @@ func _build_pond() -> void:
 	# Grass tufts, reeds and trees
 	add_child(PondScenery.build(pond_radius, pond_radius + bank_width, grass_tufts, reeds, trees))
 
-	# The ring bridge: deck (top 5 mm above y = 0), its side faces, and low edge rails
-	var wood := _solid(wood_color)
-	var dark := _solid(wood_color.darkened(0.25))
-	_piece("BridgeDeck", _ring_flat(r_in, r_out, 0.005), wood)
-	_piece("BridgeSideIn", _ring_wall(r_in, -0.08, 0.005), dark)
-	_piece("BridgeSideOut", _ring_wall(r_out, -0.08, 0.005), dark)
-	_piece("RailIn", _ring_wall(r_in + 0.03, 0.005, 0.06), dark)
-	_piece("RailOut", _ring_wall(r_out - 0.03, 0.005, 0.06), dark)
+	# The ring bridge: separate planks (top 5 mm above y = 0) on a dark frame,
+	# side boards, and a low curb along each edge
+	var dark := _solid(wood_color.darkened(0.3))
+	_piece("BridgeFrame", _ring_flat(r_in, r_out, -0.035), _solid(wood_color.darkened(0.6)))
+	_piece("BridgePlanks", _ring_planks(r_in, r_out, -0.03, 0.005), _plank_material())
+	_piece("BridgeSideIn", _ring_wall(r_in, -0.09, -0.03), dark)
+	_piece("BridgeSideOut", _ring_wall(r_out, -0.09, -0.03), dark)
+	_piece("CurbIn", _ring_box(r_in, r_in + 0.07, 0.005, 0.065), dark)
+	_piece("CurbOut", _ring_box(r_out - 0.07, r_out, 0.005, 0.065), dark)
 
 	# Posts holding the bridge up, standing in the water, about every 2 m
 	var post_mat := _underwater(wood_color.darkened(0.35))
@@ -253,6 +254,70 @@ func _ring_wall(r: float, y0: float, y1: float) -> Mesh:
 		st.add_vertex(p00); st.add_vertex(p10); st.add_vertex(p11)
 		st.add_vertex(p00); st.add_vertex(p11); st.add_vertex(p01)
 	return st.commit()
+
+
+## The bridge deck as separate planks laid across the walkway, with small gaps
+## and slightly bevelled top edges. Each plank gets a slightly different shade
+## (stored as vertex colour), so the deck reads as wood without a texture.
+func _ring_planks(r0: float, r1: float, y0: float, y1: float) -> Mesh:
+	var plank_w := 0.2                               # plank width along the walkway (m)
+	var gap := 0.012                                  # gap between planks (m)
+	var bevel := 0.008
+	var count := maxi(12, int(TAU * (r0 + r1) * 0.5 / plank_w))
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 42
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for i in count:
+		var shade := rng.randf_range(-0.07, 0.07)
+		st.set_color(Color(1.0 + shade, 1.0 + shade, 1.0 + shade * 0.8))
+		var half_gap := gap * 0.5 / ((r0 + r1) * 0.5)
+		var a0 := TAU * i / count + half_gap
+		var a1 := TAU * (i + 1) / count - half_gap
+		var ab := bevel / ((r0 + r1) * 0.5)          # bevel as an angle
+		# corners: top face (inset by the bevel) and the outline at the bevel's foot
+		var ti := [_polar(r0 + bevel, a0 + ab, y1), _polar(r1 - bevel, a0 + ab, y1),
+				_polar(r1 - bevel, a1 - ab, y1), _polar(r0 + bevel, a1 - ab, y1)]
+		var bo := [_polar(r0, a0, y1 - bevel), _polar(r1, a0, y1 - bevel),
+				_polar(r1, a1, y1 - bevel), _polar(r0, a1, y1 - bevel)]
+		var bt := [_polar(r0, a0, y0), _polar(r1, a0, y0), _polar(r1, a1, y0), _polar(r0, a1, y0)]
+		_quad_st(st, ti[0], ti[1], ti[2], ti[3])                  # top
+		for k in 4:                                            # bevel strips + sides
+			var k2 := (k + 1) % 4
+			_quad_st(st, bo[k], bo[k2], ti[k2], ti[k])
+			_quad_st(st, bt[k], bt[k2], bo[k2], bo[k])
+	st.generate_normals()
+	return st.commit()
+
+
+## A curved beam (ring-shaped box) between two radii and two heights.
+func _ring_box(r0: float, r1: float, y0: float, y1: float) -> Mesh:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for i in SEGMENTS:
+		var a0 := TAU * i / SEGMENTS
+		var a1 := TAU * (i + 1) / SEGMENTS
+		_quad_st(st, _polar(r0, a0, y1), _polar(r1, a0, y1), _polar(r1, a1, y1), _polar(r0, a1, y1))
+		_quad_st(st, _polar(r0, a0, y0), _polar(r0, a0, y1), _polar(r0, a1, y1), _polar(r0, a1, y0))
+		_quad_st(st, _polar(r1, a0, y0), _polar(r1, a1, y0), _polar(r1, a1, y1), _polar(r1, a0, y1))
+	st.generate_normals()
+	return st.commit()
+
+
+func _polar(r: float, a: float, y: float) -> Vector3:
+	return Vector3(cos(a) * r, y, sin(a) * r)
+
+
+func _quad_st(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3) -> void:
+	st.add_vertex(a); st.add_vertex(b); st.add_vertex(c)
+	st.add_vertex(a); st.add_vertex(c); st.add_vertex(d)
+
+
+func _plank_material() -> StandardMaterial3D:
+	var mat := _solid(wood_color)
+	mat.vertex_color_use_as_albedo = true     # albedo = wood_color x each plank's shade
+	mat.roughness = 0.85
+	return mat
 
 
 ## Murk per metre for the current clarity setting.
