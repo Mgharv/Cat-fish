@@ -11,7 +11,8 @@
 [ext_resource type="Script" uid="uid://bt5krry1meoum" path="res://scripts/xr_grab_hands.gd" id="9_082n1"]
 [ext_resource type="Script" uid="uid://cabtbicn2evsq" path="res://scripts/xr_move.gd" id="10_xex6t"]
 [ext_resource type="Script" uid="uid://bkeashwobe3gi" path="res://scripts/xr_passthrough.gd" id="11_aa0lp"]
-[ext_resource type="PackedScene" path="res://pond.tscn" id="12_iu0sx"]
+[ext_resource type="PackedScene" uid="uid://dbrd440i1ye14" path="res://pond.tscn" id="12_iu0sx"]
+[ext_resource type="AudioStream" uid="uid://bvupd2f7333ef" path="res://Garden City_v1.0.wav" id="15_7sc4i"]
 [ext_resource type="Script" uid="uid://bxgwqtdsupb4t" path="res://scripts/bridge_walk.gd" id="25_mljfx"]
 [ext_resource type="Script" uid="uid://bgtoxwamsgrcn" path="res://scripts/game_manager.gd" id="26_qpefm"]
 
@@ -573,7 +574,6 @@ environment = SubResource("Environment_lts4m")
 [node name="SunLight" type="DirectionalLight3D" parent="." unique_id=1844096403]
 transform = Transform3D(0.86601907, -0.3535631, 0.35355926, 0, 0.70710295, 0.70711064, -0.500011, -0.61237127, 0.6123646, 0, 2.9986405, 0)
 light_color = Color(1, 0.96, 0.89, 1)
-light_energy = 1.0
 shadow_enabled = true
 shadow_bias = 0.03
 shadow_normal_bias = 1.0
@@ -587,7 +587,12 @@ script = ExtResource("11_aa0lp")
 world_environment = NodePath("../WorldEnvironment")
 
 [node name="Pond" parent="." unique_id=1180617497 instance=ExtResource("12_iu0sx")]
+grass_tufts = 700
+reeds = 64
+trees = 0
+rocks = 10
 murk_color = Color(0.048969954, 0.34496498, 0.45394516, 1)
+reflection_strength = 0.45
 
 [node name="BridgeWalk" type="Node" parent="." unique_id=171562805 node_paths=PackedStringArray("player", "pond")]
 script = ExtResource("25_mljfx")
@@ -597,3 +602,7 @@ pond = NodePath("../Pond")
 [node name="GameManager" type="Node" parent="." unique_id=198649617 node_paths=PackedStringArray("pond")]
 script = ExtResource("26_qpefm")
 pond = NodePath("../Pond")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1095813380]
+stream = ExtResource("15_7sc4i")
+autoplay = true

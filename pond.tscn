@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dbrd440i1ye14"]
 
-[ext_resource type="Script" path="res://scripts/pond.gd" id="1_pond"]
-[ext_resource type="PackedScene" path="res://fish.tscn" id="2_fish"]
-[ext_resource type="Script" path="res://scripts/fish_species.gd" id="3_e6my3"]
+[ext_resource type="Script" uid="uid://b07b38x53jp8e" path="res://scripts/pond.gd" id="1_pond"]
+[ext_resource type="PackedScene" uid="uid://p0086xib3q3f" path="res://fish.tscn" id="2_fish"]
+[ext_resource type="Script" uid="uid://dnq4qy5852y7m" path="res://scripts/fish_species.gd" id="3_e6my3"]
 [ext_resource type="Resource" path="res://species/01_orange_roundfish.tres" id="4_0l2ji"]
 [ext_resource type="Resource" path="res://species/02_blue_darter.tres" id="5_y4b7v"]
 [ext_resource type="Resource" path="res://species/03_yellow_longfish.tres" id="6_koo8m"]
@@ -29,5 +29,16 @@
 script = ExtResource("1_pond")
 fish_scene = ExtResource("2_fish")
 species_mix = Array[ExtResource("3_e6my3")]([ExtResource("4_0l2ji"), ExtResource("5_y4b7v"), ExtResource("6_koo8m"), ExtResource("7_s325f"), ExtResource("8_2ttvd"), ExtResource("9_ufvb1"), ExtResource("10_dp88u"), ExtResource("11_dm258"), ExtResource("12_ip2b8"), ExtResource("13_s1lg6"), ExtResource("14_40xwk"), ExtResource("15_vcfq5"), ExtResource("16_hmhxr"), ExtResource("17_frc24"), ExtResource("18_uwna7"), ExtResource("19_dtaor"), ExtResource("20_xcifi"), ExtResource("21_f1p0o"), ExtResource("22_lc5fk"), ExtResource("23_rywuv"), ExtResource("24_cfg5l")])
+bank_width = 3.0
+grass_tufts = null
+reeds = null
+trees = null
+rocks = null
+distant_scenery = false
+water_clarity = 0.0
+max_murk_per_metre = 1.0
+water_color = Color(0.1, 0.5, 0.45, 0.3)
+reflection_strength = null
+wood_color = Color(0.55, 0.38, 0.22, 1)
 
 [node name="Fishes" type="Node3D" parent="." unique_id=1666804376]
